@@ -1,6 +1,7 @@
 from tkinter import *
 from tkinter import ttk
 
+
 root = Tk()
 
 root.title("Apply a filter to an image!")
@@ -11,21 +12,31 @@ frame = ttk.Frame(content, borderwidth=5, relief="ridge", width=550, height=350)
 content.grid(column=0, row=0, sticky=(N, S, E, W))
 frame.grid(column=0, row=0, columnspan=3, rowspan=2, sticky=(N, S, E, W))
 
-#buttons
-browse_btn = ttk.Button(content, text="Browse")
+#Buttons
 apply_btn = ttk.Button(content, text="Apply")
+save_btn = ttk.Button(content, text="Save")
+browse_btn = ttk.Button(content, text="Browse")
 
+#Labels
+fil_label = ttk.Label(content, text="Select a filter below")
 
-#populate listbox
-choices = [1, 2, 3, 4, 5]
+#Populate Listbox
+choices = ["Greyscale", "Sharp", "Sepia", "Invert", "Pencil Scetch"]
 choice_var = StringVar(value=choices)
 fil_list = Listbox(content, listvariable=choice_var, height=5)
 
-#layout config
-browse_btn.grid(column=3, row=3, padx=10)
-apply_btn.grid(column=4, row=3)
+#Layout Config
+apply_btn.grid(column=3, row=3, padx=10)
+apply_btn.config(width=10)
+save_btn.grid(column=4, row=3)
+save_btn.config(width=10)
 fil_list.grid(column=3, row=1, padx=30)
-fil_list.config(height=15, width=25)
+fil_list.config(height=5, width=10)
+fil_label.grid(column=3, row=0)
+browse_btn.grid(column=4, row=0)
+browse_btn.config(width=10)
+
+#Grid Config
 root.columnconfigure(0, weight=1)
 root.rowconfigure(0, weight=1)
 content.columnconfigure(0, weight=3)
@@ -34,8 +45,5 @@ content.columnconfigure(2, weight=3)
 content.columnconfigure(3, weight=1)
 content.columnconfigure(4, weight=1)
 content.rowconfigure(1, weight=1)
-
-
-
 
 root.mainloop()
