@@ -1,9 +1,16 @@
 from tkinter import *
 from tkinter import ttk
+from tkinter import filedialog
+from PIL import ImageTk, Image
 
-
+def browse():
+    img_path = filedialog.askopenfilename(title="Select an Image",
+                                          filetypes=(("PNG Files", "*.png"),
+                                                     ("JPEG Files", "*.jpeg;*.jpg"),
+                                                     ("All Files", "*,*")))
+    img = Image.open(img_path)
+    image_label = ttk.Label(frame, image=img)
 root = Tk()
-
 root.title("Apply a filter to an image!")
 
 #Image Containter
@@ -15,7 +22,7 @@ frame.grid(column=0, row=0, columnspan=3, rowspan=2, sticky=(N, S, E, W))
 #Buttons
 apply_btn = ttk.Button(content, text="Apply")
 save_btn = ttk.Button(content, text="Save")
-browse_btn = ttk.Button(content, text="Browse")
+browse_btn = ttk.Button(content, text="Browse", command=browse)
 
 #Labels
 fil_label = ttk.Label(content, text="Select a filter below")
