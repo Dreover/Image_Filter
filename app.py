@@ -5,11 +5,10 @@ from PIL import ImageTk, Image
 
 def browse():
     img_path = filedialog.askopenfilename(title="Select an Image",
-                                          filetypes=(("PNG Files", "*.png"),
-                                                     ("JPEG Files", "*.jpeg;*.jpg"),
-                                                     ("All Files", "*,*")))
-    img = Image.open(img_path)
-    image_label = ttk.Label(frame, image=img)
+                                          filetypes=[("PNG Files", "*.png"),                                                    
+                                                     ("All Files", "*.*")])
+    img = ImageTk.PhotoImage(Image.open(img_path))
+    img_label = ttk.Label(frame, image=img)
 root = Tk()
 root.title("Apply a filter to an image!")
 
