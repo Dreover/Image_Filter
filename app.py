@@ -3,17 +3,20 @@ from tkinter import ttk
 from tkinter import filedialog
 from PIL import ImageTk, Image
 
-img = None
 def upload():
     global img
     f_types = [("PNG Files", "*.png"), ("All Files", "*.*"),
                ("Jpg Files", "*.jpg")]
     img_path = filedialog.askopenfilename(title="Select an Image",
-                                          filetypes=f_types)    
-    img = ImageTk.PhotoImage(Image.open(img_path))
-    img = img.resize(550, 350)
-    place_img = ttk.Label(root, image=img)
+                                          filetypes=f_types)
+    img_size = (300, 250)  
+    img = ImageTk.PhotoImage(Image.open(img_path).resize(img_size)) 
+    place_img = ttk.Label(frame, image=img)
     place_img.grid(column=0, row=0)
+    
+def get_filter():
+    pass
+    
 root = Tk()
 root.title("Apply a filter to an image!")
 
