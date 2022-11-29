@@ -11,7 +11,9 @@ def upload():
     img_path = filedialog.askopenfilename(title="Select an Image",
                                           filetypes=f_types)    
     img = ImageTk.PhotoImage(Image.open(img_path))
-    place_img = ttk.Button(frame, image=img)
+    img = img.resize(550, 350)
+    place_img = ttk.Label(root, image=img)
+    place_img.grid(column=0, row=0)
 root = Tk()
 root.title("Apply a filter to an image!")
 
